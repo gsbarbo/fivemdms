@@ -25,6 +25,10 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::get('/application/{applicationForm}/create', [ApplicationController::class, 'create'])->name('apply.application.create');
         Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
     });
+
+    Route::prefix('portal')->name('portal.')->middleware(['auth'])->group(function () {
+        Route::get('/', [PortalController::class, 'index'])->name('index');
+    });
 });
 
 
