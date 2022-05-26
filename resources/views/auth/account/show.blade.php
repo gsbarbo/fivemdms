@@ -26,7 +26,8 @@
 
             @if ($user->account_status == 4)
                 <div class="p-3 mx-auto my-4 bg-green-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
-                    Your account or application has been approved. You may access the panel here.
+                    <a href="{{ route('portal.index') }}">Your account or application has been approved. You may
+                        access the panel here</a>.
                 </div>
             @endif
 
