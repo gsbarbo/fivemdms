@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,8 +27,18 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
     });
 
-    Route::prefix('portal')->name('portal.')->middleware(['auth'])->group(function () {
+    Route::prefix('portal')->name('portal.')->middleware(['auth', 'discord_link_check'])->group(function () {
         Route::get('/', [PortalController::class, 'index'])->name('index');
+
+        Route::get('/timeclock', [TimeclockController::class, 'index'])->name('timeclock.index');
+        Route::post('/timeclock/start', [TimeclockController::class, 'start'])->name('timeclock.start');
+        Route::post('/timeclock/stop', [TimeclockController::class, 'stop'])->name('timeclock.stop');
+        Route::get('/timeclock/patrol/{patrol}', [TimeclockController::class, 'show'])->name('timeclock.show');
+
+        Route::prefix('reports')->name('reports.')->group(function () {
+            Route::get('/endpatrol/{patrol}/create', [EndPatrolReportController::class, 'create'])->name('endpatrol.create');
+            Route::post('/endpatrol/{patrol}', [EndPatrolReportController::class, 'store'])->name('endpatrol.store');
+        });
     });
 });
 
