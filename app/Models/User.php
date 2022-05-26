@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -12,16 +11,11 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $primaryKey = 'steam_hex';
+    public $incrementing = false;
+    protected $keyType = 'string';
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -29,7 +23,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -41,4 +34,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public static function dec2hex($number)
+    {
+        $hexvalues = array(
+            '0', '1', '2', '3', '4', '5', '6', '7',
+            '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
+        );
+        $hexval = '';
+        while ($number != '0') {
+            $hexval = $hexvalues[bcmod($number, '16', 0)] . $hexval;
+            $number = bcdiv($number, '16', 0);
+        }
+        return $hexval;
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'steam_hex';
+    }
 }

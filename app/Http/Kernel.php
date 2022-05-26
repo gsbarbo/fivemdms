@@ -63,5 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'new_account_check' => \App\Http\Middleware\NewAccountCheck::class,
+        'discord_link_check' => \App\Http\Middleware\DiscordLinkCheck::class,
     ];
 }
