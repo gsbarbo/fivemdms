@@ -27,7 +27,7 @@ switch ($level) {
 @endphp
 
 <div {{ $attributes->merge(['class' => "w-screen max-w-lg $bg_color mx-auto mt-6 p-2"]) }} role="alert"
-    x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 10000)" x-transition:leave.duration.800ms>
+    x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" x-transition:leave.duration.800ms>
     @if (is_array($message))
         <div class="flex space-x-2">
             <svg class="w-6 h-6 {{ $stroke_color }}" fill="none" stroke="currentColor" viewBox="0 0 24 24"

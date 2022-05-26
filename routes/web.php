@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'pages.home')->name('home');
+
+Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
+
+
+    Route::get('/account/show/{user}', [AccountController::class, 'show'])->name('auth.account.show');
+});
 
 
 require __DIR__ . '/auth.php';

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\Auth\LinkDiscordController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\SteamLoginController;
 use Illuminate\Support\Facades\Route;
@@ -18,3 +19,13 @@ Route::group(['middleware' => 'new_account_check'], function () {
 });
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+Route::middleware('auth')->group(function () {
+    Route::get('login/discord', function () {
+        return Socialite::driver('discord')->redirect();
+    })->name('auth.discord');
+
+    Route::get('login/discord/handle', [LinkDiscordController::class, 'discord']);
+
+    Route::view('account/link/discord', 'auth.account.link-discord')->name('account.link.discord');
+});
