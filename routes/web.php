@@ -20,6 +20,11 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
 
     Route::get('/account/show/{user}', [AccountController::class, 'show'])->name('auth.account.show');
+
+    Route::group(['middleware' => 'must_apply'], function () {
+        Route::get('/application/{applicationForm}/create', [ApplicationController::class, 'create'])->name('apply.application.create');
+        Route::post('/application/{applicationForm}', [ApplicationController::class, 'store'])->name('apply.application.store');
+    });
 });
 
 
