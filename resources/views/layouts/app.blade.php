@@ -39,6 +39,15 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         <div class="mt-8">{{ $slot }}</div>
 
     </div>
+
+    @if (session('alert'))
+        <div class="">
+            <div class="absolute right-0 z-50 top-9">
+                <x-alert />
+            </div>
+        </div>
+    @endif
+
 </body>
 
 </html>

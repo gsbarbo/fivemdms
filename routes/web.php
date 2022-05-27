@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AccountController;
+use App\Http\Controllers\PatrolController;
 use App\Http\Controllers\PortalController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,9 +31,14 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
     Route::prefix('portal')->name('portal.')->middleware(['auth', 'discord_link_check'])->group(function () {
         Route::get('/', [PortalController::class, 'index'])->name('index');
 
+        Route::get('/patrols', [PatrolController::class, 'index'])->name('patrols.index');
+        Route::post('/patrols', [PatrolController::class, 'store'])->name('patrols.store');
+        Route::get('/patrols/{patrol}', [PatrolController::class, 'show'])->name('patrols.show');
+        Route::put('/patrols/{patrol}', [PatrolController::class, 'update'])->name('patrols.update');
+
         Route::get('/timeclock', [TimeclockController::class, 'index'])->name('timeclock.index');
-        Route::post('/timeclock/start', [TimeclockController::class, 'start'])->name('timeclock.start');
-        Route::post('/timeclock/stop', [TimeclockController::class, 'stop'])->name('timeclock.stop');
+        Route::post('/timeclock', [TimeclockController::class, 'create'])->name('timeclock.create');
+        Route::put('/timeclock', [TimeclockController::class, 'update'])->name('timeclock.update');
         Route::get('/timeclock/patrol/{patrol}', [TimeclockController::class, 'show'])->name('timeclock.show');
 
         Route::prefix('reports')->name('reports.')->group(function () {

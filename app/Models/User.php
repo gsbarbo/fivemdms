@@ -36,6 +36,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function hasActivePatrol()
+    {
+        return $this->patrol()->running()->count();
+    }
+
     public static function dec2hex($number)
     {
         $hexvalues = array(
@@ -48,6 +53,11 @@ class User extends Authenticatable
             $number = bcdiv($number, '16', 0);
         }
         return $hexval;
+    }
+
+    public function patrol()
+    {
+        return $this->hasMany(Patrol::class);
     }
 
     public function getRouteKeyName()

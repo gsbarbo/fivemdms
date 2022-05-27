@@ -26,8 +26,8 @@
                 href="{{ route('portal.index') }}">Home</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}"
                 href="{{ route('portal.index') }}">Reports</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/timeclock') ? 'text-white' : '' }}"
-                href="{{ route('portal.timeclock.index') }}">Timeclock</a>
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') ? 'text-white' : '' }}"
+                href="{{ route('portal.patrols.index') }}">Patrols</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}"
                 href="{{ route('portal.index') }}">Roster</a>
 
