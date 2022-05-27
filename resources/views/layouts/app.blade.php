@@ -17,17 +17,22 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <link href="https://fonts.googleapis.com/css2?family=Mrs+Saint+Delafield&family=Reenie+Beanie&display=swap"
         rel="stylesheet">
 
-
-
+    <link href="{{ asset('bladewind/css/animate.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('bladewind/css/bladewind-ui.min.css') }}" rel="stylesheet" />
     <!-- Styles -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <script>
+        var notification_timeout, user_function, el_name, momo_obj, delete_obj;
+        var dropdownIsOpen = false;
+    </script>
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('bladewind/js/helpers.js') }}" type="text/javascript"></script>
 </head>
 
 <body class="bg-gray-400 dark:bg-primary">
-
     <div class="font-sans antialiased text-gray-900 dark:text-off-white">
 
         <x-portal-navbar></x-portal-navbar>

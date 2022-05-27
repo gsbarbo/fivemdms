@@ -25,7 +25,7 @@
                                 consequatur at blanditiis labore asperiores. Ab?</p>
                         </div>
                     </div>
-                    <p class="text-right text-gray-600">Posted by: Admin at
+                    <p class="text-right text-gray-400">Posted by: Admin at
                         05/25/2022 20:00
                     </p>
                 </div>
