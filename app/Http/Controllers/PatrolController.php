@@ -37,6 +37,8 @@ class PatrolController extends Controller
 
     public function show(Patrol $patrol)
     {
+
+
         return view('portal.patrols.show', compact('patrol'));
     }
 }
