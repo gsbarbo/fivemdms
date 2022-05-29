@@ -5,6 +5,10 @@
                 class="text-2xl font-bold">{{ auth()->user()->badge_number }}</span>. If this is
             wrong please see your department staff.</p>
         <div class="container w-full mx-auto mt-8 md:w-3/5">
+            <a href="{{ route('portal.patrols.index') }}">
+                <button type="button"
+                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Back</button>
+            </a>
             <form class="space-y-8 divide-y divide-gray-200"
                 action="{{ route('portal.report.store', $report_form->id) }}" method="POST">
                 @csrf
@@ -62,18 +66,12 @@
                                 @endif
                             @endforeach
 
-
-
-
-
-
                         </div>
                     </div>
                 </div>
                 <div class="pt-5">
                     <div class="flex justify-end">
-                        <button type="button"
-                            class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancel</button>
+
                         <button type="submit"
                             class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Save</button>
                     </div>
@@ -81,6 +79,7 @@
 
             </form>
         </div>
+
 
 
 
