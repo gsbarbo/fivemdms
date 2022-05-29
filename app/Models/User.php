@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany(Patrol::class);
     }
 
+    public function report()
+    {
+        return $this->hasMany(Report::class);
+    }
+
     public function getRouteKeyName()
     {
         return 'steam_hex';

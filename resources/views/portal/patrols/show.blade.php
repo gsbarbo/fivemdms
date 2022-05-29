@@ -14,10 +14,9 @@
 
             <div class="my-12">
                 <h3 class="text-xl text-center">Patrol Reports</h3>
-                <x-bladewind.button>End of Watch</x-bladewind.button>
-                <x-bladewind.button>Use of Force</x-bladewind.button>
-                <x-bladewind.button>Arrest Report</x-bladewind.button>
-                <x-bladewind.button>Incident report</x-bladewind.button>
+                @foreach ($fillable_reports as $report)
+                    <a href="{{ route('portal.report.create', $report->id) }}">{{ $report->title }}</a><br>
+                @endforeach
             </div>
 
         </div>

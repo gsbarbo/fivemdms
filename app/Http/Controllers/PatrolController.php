@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Patrol;
+use App\Models\ReportForm;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,7 +39,13 @@ class PatrolController extends Controller
     public function show(Patrol $patrol)
     {
 
+        $fillable_reports = ReportForm::where('is_active', true)->get();
 
-        return view('portal.patrols.show', compact('patrol'));
+        // foreach ($fillable_reports as $report) {
+        //     dd($report->report_questions);
+        // }
+
+
+        return view('portal.patrols.show', compact('patrol', 'fillable_reports'));
     }
 }

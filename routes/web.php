@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\PatrolController;
 use App\Http\Controllers\PortalController;
+use App\Http\Controllers\Reports\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,10 +37,8 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::get('/patrols/{patrol}', [PatrolController::class, 'show'])->name('patrols.show');
         Route::put('/patrols/{patrol}', [PatrolController::class, 'update'])->name('patrols.update');
 
-        Route::get('/timeclock', [TimeclockController::class, 'index'])->name('timeclock.index');
-        Route::post('/timeclock', [TimeclockController::class, 'create'])->name('timeclock.create');
-        Route::put('/timeclock', [TimeclockController::class, 'update'])->name('timeclock.update');
-        Route::get('/timeclock/patrol/{patrol}', [TimeclockController::class, 'show'])->name('timeclock.show');
+        Route::get('/report/{report_form}/create', [ReportController::class, 'create'])->name('report.create');
+        Route::post('/report/{report_form}', [ReportController::class, 'store'])->name('report.store');
 
         Route::prefix('reports')->name('reports.')->group(function () {
             Route::get('/endpatrol/{patrol}/create', [EndPatrolReportController::class, 'create'])->name('endpatrol.create');
