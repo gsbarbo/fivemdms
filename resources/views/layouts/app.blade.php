@@ -30,6 +30,9 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('bladewind/js/helpers.js') }}" type="text/javascript"></script>
+
+    @livewireStyles
+    @powerGridStyles
 </head>
 
 <body class="bg-gray-400 dark:bg-primary">
@@ -48,6 +51,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
         </div>
     @endif
 
+    @livewireScripts
+    @powerGridScripts
 </body>
 
 </html>

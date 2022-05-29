@@ -26,10 +26,10 @@
                 href="{{ route('portal.index') }}">Home</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}"
                 href="{{ route('portal.index') }}">Reports</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') ? 'text-white' : '' }}"
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
                 href="{{ route('portal.patrols.index') }}">Patrols</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}"
-                href="{{ route('portal.index') }}">Roster</a>
+            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
+                href="{{ route('portal.roster.index') }}">Roster</a>
 
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/') ? 'text-white' : '' }}"

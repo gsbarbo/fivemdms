@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\PatrolController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\Reports\ReportController;
+use App\Http\Controllers\RosterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,8 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
     Route::prefix('portal')->name('portal.')->middleware(['auth', 'discord_link_check'])->group(function () {
         Route::get('/', [PortalController::class, 'index'])->name('index');
+        Route::get('/roster', [RosterController::class, 'index'])->name('roster.index');
+
 
         Route::get('/patrols', [PatrolController::class, 'index'])->name('patrols.index');
         Route::post('/patrols', [PatrolController::class, 'store'])->name('patrols.store');
@@ -39,11 +42,6 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
         Route::get('/report/{report_form}/create', [ReportController::class, 'create'])->name('report.create');
         Route::post('/report/{report_form}', [ReportController::class, 'store'])->name('report.store');
-
-        Route::prefix('reports')->name('reports.')->group(function () {
-            Route::get('/endpatrol/{patrol}/create', [EndPatrolReportController::class, 'create'])->name('endpatrol.create');
-            Route::post('/endpatrol/{patrol}', [EndPatrolReportController::class, 'store'])->name('endpatrol.store');
-        });
     });
 });
 

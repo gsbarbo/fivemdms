@@ -11,7 +11,9 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
         "mkocansey/bladewind": "^0.1.7",
+        "power-components/livewire-powergrid": "^3.0",
         "socialiteproviders/discord": "^4.1",
         "socialiteproviders/steam": "^4.2"
     },
