@@ -10,7 +10,7 @@
                     class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Back</button>
             </a>
             <form class="space-y-8 divide-y divide-gray-200"
-                action="{{ route('portal.report.store', $report_form->id) }}" method="POST">
+                action="{{ route('portal.reports.store', $report_form->id) }}" method="POST">
                 @csrf
                 <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
                     <div>

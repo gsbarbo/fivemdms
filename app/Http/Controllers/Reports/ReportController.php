@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+
+    public function index()
+    {
+        $reports = ReportForm::where('is_active', true)->get();
+
+        return view('portal.reports.index', compact('reports'));
+    }
+
     public function create(ReportForm $report_form)
     {
         // dd($reportForm->report_questions);

@@ -6,17 +6,19 @@
             wrong please see your department staff.</p>
         <div class="container w-full mx-auto mt-8 md:w-3/5">
             <div class="my-12">
-                <h3 class="text-xl text-center">Patrol Information</h3>
-                <p><b>Start Time: </b> {{ $patrol->started_at }}</p>
-                <p><b>End Time: </b> {{ $patrol->stopped_at }}</p>
-                <p><b>Patrol Time: </b> {{ $patrol->totalTime() }}</p>
+                <h3 class="text-xl text-center">Reports</h3>
             </div>
 
-            <div class="my-12">
-                <h3 class="text-xl text-center">Patrol Reports</h3>
-                @foreach ($fillable_reports as $report)
-                    <a href="{{ route('portal.reports.create', $report->id) }}">{{ $report->title }}</a><br>
+            <h3 class="text-xl text-center">Patrol Reports</h3>
+            <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
+
+                @foreach ($reports as $report)
+                    <div class="">
+                        <a href="{{ route('portal.reports.create', $report->id) }}">{{ $report->title }}</a><br>
+                        <p>{{ $report->description }}</p>
+                    </div>
                 @endforeach
+
             </div>
 
         </div>

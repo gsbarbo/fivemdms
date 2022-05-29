@@ -38,14 +38,7 @@ class PatrolController extends Controller
 
     public function show(Patrol $patrol)
     {
-
         $fillable_reports = ReportForm::where('is_active', true)->get();
-
-        // foreach ($fillable_reports as $report) {
-        //     dd($report->report_questions);
-        // }
-
-
         return view('portal.patrols.show', compact('patrol', 'fillable_reports'));
     }
 }

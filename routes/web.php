@@ -40,8 +40,9 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::get('/patrols/{patrol}', [PatrolController::class, 'show'])->name('patrols.show');
         Route::put('/patrols/{patrol}', [PatrolController::class, 'update'])->name('patrols.update');
 
-        Route::get('/report/{report_form}/create', [ReportController::class, 'create'])->name('report.create');
-        Route::post('/report/{report_form}', [ReportController::class, 'store'])->name('report.store');
+        Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
+        Route::get('/reports/{report_form}/create', [ReportController::class, 'create'])->name('reports.create');
+        Route::post('/reports/{report_form}', [ReportController::class, 'store'])->name('reports.store');
     });
 });
 
