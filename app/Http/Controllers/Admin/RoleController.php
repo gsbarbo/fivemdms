@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoleCreateRequest;
+use App\Http\Requests\Admin\RoleUpdateRequest;
 use App\Models\Permission;
 use App\Models\Role;
 use Gate;
@@ -44,6 +45,30 @@ class RoleController extends Controller
     {
         abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.role.edit', compact('role'));
+        $permissions = Permission::all();
+
+        $rolePermissions = $role->permissions->toArray();
+
+        foreach ($rolePermissions as $key => $value) {
+            $role_permissions[] = $value['id'];
+        }
+
+        return view('admin.roles.edit', compact('role', 'permissions', 'role_permissions'));
+    }
+
+    public function update(RoleUpdateRequest $request, Role $role)
+    {
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('portal.admin.roles.index')->with('alert', ['message' => ['Role updated.'], 'level' => "success"]);
+    }
+
+    public function destroy(Role $role)
+    {
+        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $role->permissions()->sync($request->permissions);
+        return redirect()->route('portal.admin.roles.index')->with('alert', ['message' => ['Role updated.'], 'level' => "success"]);
     }
 }
