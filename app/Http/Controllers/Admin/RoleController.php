@@ -66,9 +66,13 @@ class RoleController extends Controller
 
     public function destroy(Role $role)
     {
-        abort_if(Gate::denies('role_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $role->permissions()->sync($request->permissions);
-        return redirect()->route('portal.admin.roles.index')->with('alert', ['message' => ['Role updated.'], 'level' => "success"]);
+        $role->delete();
+
+        // $undo = "<a href='" . route('portal.admin.roles.restore', $role->id) . "'>Undo</a>";
+        $undo = "";
+
+        return redirect()->route('portal.admin.roles.index')->with('alert', ['message' => ['Role deleted.', $undo], 'level' => "success"]);
     }
 }

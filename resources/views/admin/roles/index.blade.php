@@ -9,8 +9,8 @@
                         <a href="{{ route('portal.admin.roles.edit', $role->id) }}">Edit</a>
                     @endcan
 
-                    @can('permission_delete')
-                        @if ($role->id > 3)
+                    @can('role_delete')
+                        @if ($role->id > 1)
                             <form action="{{ route('portal.admin.roles.destroy', $role->id) }}" method="POST">
                                 @method('delete')
                                 @csrf
