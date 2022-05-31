@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
             Route::get('permissions/restore/{permission}', [PermissionController::class, 'restore'])->name('permissions.restore');
             Route::resource('permissions', PermissionController::class, ['except' => ['show', 'update', 'edit']]);
 
-            Route::resource('roles', RoleController::class, ['except' => ['store', 'update', 'destroy']]);
+            Route::resource('roles', RoleController::class, ['except' => ['show']]);
         });
     });
 });
