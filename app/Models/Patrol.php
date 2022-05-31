@@ -18,6 +18,11 @@ class Patrol extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function reports()
+    {
+        return $this->hasMany(Report::class);
+    }
+
     public function scopeMine($query)
     {
         return $query->where('user_steam_hex', auth()->user()->steam_hex);

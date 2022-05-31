@@ -22,4 +22,9 @@ class Report extends Model
     {
         return $this->belongsTo(ReportForm::class);
     }
+
+    public function patrol()
+    {
+        return $this->belongsTo(Patrol::class);
+    }
 }

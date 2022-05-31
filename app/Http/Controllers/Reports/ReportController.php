@@ -56,4 +56,11 @@ class ReportController extends Controller
 
         return redirect()->route('portal.patrols.index')->with('alert', ['message' => ['Report saved.'], 'level' => "success"]);
     }
+
+    public function show(ReportForm $report_form, Report $report)
+    {
+        $report_questions = json_decode($report->answers);
+
+        return view('portal.reports.show', compact('report', 'report_questions'));
+    }
 }

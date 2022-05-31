@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
         Route::get('/reports/{report_form}/create', [ReportController::class, 'create'])->name('reports.create');
         Route::post('/reports/{report_form}', [ReportController::class, 'store'])->name('reports.store');
+        Route::get('/reports/{report_form}/{report}', [ReportController::class, 'show'])->name('reports.show');
     });
 });
 

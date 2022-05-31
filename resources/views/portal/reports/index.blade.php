@@ -4,7 +4,9 @@
         <p class="mt-3 text-lg text-center">Your current unit number is: <span
                 class="text-2xl font-bold">{{ auth()->user()->badge_number }}</span>. If this is
             wrong please see your department staff.</p>
+
         <div class="container w-full mx-auto mt-8 md:w-3/5">
+            <x-back-button />
             <div class="my-12">
                 <h3 class="text-xl text-center">Reports</h3>
             </div>

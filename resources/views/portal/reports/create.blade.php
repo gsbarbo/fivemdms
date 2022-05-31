@@ -5,10 +5,7 @@
                 class="text-2xl font-bold">{{ auth()->user()->badge_number }}</span>. If this is
             wrong please see your department staff.</p>
         <div class="container w-full mx-auto mt-8 md:w-3/5">
-            <a href="{{ route('portal.patrols.index') }}">
-                <button type="button"
-                    class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Back</button>
-            </a>
+            <x-back-button />
             <form class="space-y-8 divide-y divide-gray-200"
                 action="{{ route('portal.reports.store', $report_form->id) }}" method="POST">
                 @csrf
