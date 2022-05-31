@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\AccountController;
 use App\Http\Controllers\PatrolController;
 use App\Http\Controllers\PortalController;
@@ -44,6 +46,14 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::get('/reports/{report_form}/create', [ReportController::class, 'create'])->name('reports.create');
         Route::post('/reports/{report_form}', [ReportController::class, 'store'])->name('reports.store');
         Route::get('/reports/{report_form}/{report}', [ReportController::class, 'show'])->name('reports.show');
+
+
+        Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+            Route::get('permissions/restore/{permission}', [PermissionController::class, 'restore'])->name('permissions.restore');
+            Route::resource('permissions', PermissionController::class, ['except' => ['show', 'update', 'edit']]);
+
+            Route::resource('roles', RoleController::class, ['except' => ['store', 'update', 'destroy']]);
+        });
     });
 });
 
