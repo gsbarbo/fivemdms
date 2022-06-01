@@ -29,7 +29,7 @@
                 <h3 class="text-xl text-center">Add New Report</h3>
                 @foreach ($fillable_reports as $report)
                     <x-bladewind.button size="small" color="green"><a
-                            href="{{ route('portal.reports.create', $report->id) }}">{{ $report->title }}</a>
+                            href="{{ route('portal.reports.create', $report->id) }}?patrol_id={{ $patrol->id }}">{{ $report->title }}</a>
                     </x-bladewind.button>
                 @endforeach
             </div>

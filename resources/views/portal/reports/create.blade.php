@@ -25,7 +25,9 @@
                                         class="block w-full max-w-lg text-black border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm">
                                         <option value="0">No</option>
                                         @foreach ($patrols as $patrol)
-                                            <option value="{{ $patrol->id }}">{{ $patrol->id }}</option>
+                                            <option value="{{ $patrol->id }}"
+                                                @if ($patrol_id == $patrol->id) selected="selected" @endif>
+                                                {{ $patrol->id }}</option>
                                         @endforeach
                                     </select>
                                 </div>
