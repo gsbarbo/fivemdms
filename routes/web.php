@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\AccountController;
@@ -49,6 +50,8 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
 
         Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
+            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
             Route::get('permissions/restore/{permission}', [PermissionController::class, 'restore'])->name('permissions.restore');
             Route::resource('permissions', PermissionController::class, ['except' => ['show', 'update', 'edit']]);
 

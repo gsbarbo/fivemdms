@@ -5,7 +5,7 @@
             {{-- <img src="{{ asset('images/logo.png') }}" width="60" height="60" alt=""> --}}
             <a href="#"
                 class="text-lg font-semibold tracking-widest text-white uppercase rounded-lg xl:ml-3 focus:outline-none focus:shadow-outline">
-                {{ config('app.name') }} - Portal
+                {{ config('app.name') }} - Admin
             </a>
             <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline text-action"
                 @click="open = !open">
@@ -23,18 +23,13 @@
             class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal') ? 'text-white' : '' }}"
-                href="{{ route('portal.index') }}">Home</a>
+                href="{{ route('portal.index') }}">Portal</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/reports/*') || Request::is('portal/reports') ? 'text-white' : '' }}"
-                href="{{ route('portal.reports.index') }}">Reports</a>
+                href="{{ route('portal.reports.index') }}">User Management</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
-                href="{{ route('portal.patrols.index') }}">Patrols</a>
+                href="{{ route('portal.patrols.index') }}">Reports</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
                 href="{{ route('portal.roster.index') }}">Roster</a>
-
-
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/portal/admin/*') ? 'text-white' : '' }}"
-                href="{{ route('portal.admin.dashboard') }}">Admin</a>
-
 
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                 <button @click="open = !open"
