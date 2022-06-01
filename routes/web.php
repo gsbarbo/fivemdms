@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Auth\AccountController;
@@ -8,6 +8,7 @@ use App\Http\Controllers\PatrolController;
 use App\Http\Controllers\PortalController;
 use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\RosterController;
+use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,9 +49,13 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
         Route::post('/reports/{report_form}', [ReportController::class, 'store'])->name('reports.store');
         Route::get('/reports/{report_form}/{report}', [ReportController::class, 'show'])->name('reports.show');
 
+        Route::prefix('staff')->name('staff.')->middleware(['auth', 'can:staff_access'])->group(function () {
+            Route::get('dashboard', [StaffDashboardController::class, 'index'])->name('dashboard');
+        });
 
-        Route::prefix('admin')->name('admin.')->middleware(['auth'])->group(function () {
-            Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::prefix('admin')->name('admin.')->middleware(['auth', 'can:admin_access'])->group(function () {
+            Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
             Route::get('permissions/restore/{permission}', [PermissionController::class, 'restore'])->name('permissions.restore');
             Route::resource('permissions', PermissionController::class, ['except' => ['show', 'update', 'edit']]);
