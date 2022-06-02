@@ -1,33 +1,28 @@
-<x-app-layout>
+<x-staff-layout>
     <div class="container w-full mx-auto lg:w-3/5">
         <x-bladewind.card title="Reports">
 
-            @foreach ($roles as $role)
-                <div class="flex justify-between text-black">
-                    <p class="">{{ $role->title }}</p>
-                    @can('role_edit')
-                        <a href="{{ route('portal.admin.roles.edit', $role->id) }}">Edit</a>
-                    @endcan
-
-                    @can('role_delete')
-                        @if ($role->id > 1)
-                            <form action="{{ route('portal.admin.roles.destroy', $role->id) }}" method="POST">
-                                @method('delete')
-                                @csrf
-                                <input type="submit" value="Delete">
-                            </form>
-                        @endif
-                    @endcan
-                </div>
-            @endforeach
-
+            <x-bladewind.table>
+                <tr class="dark:text-off-white">
+                    <th>ID</th>
+                    <th>Submitter</th>
+                    <th>Report</th>
+                    <th>Actions</th>
+                </tr>
+                @foreach ($reports as $report)
+                    <tr>
+                        <td>{{ $report->id }}</td>
+                        <td>{{ $report->user->display_name }}</td>
+                        <td>{{ $report->report_form->title }}</td>
+                        <td>
+                            <a href="{{ route('portal.staff.reports.show', $report->id) }}" <x-bladewind.button
+                                size="tiny">View</x-bladewind.button>
+                        </td>
+                    </tr>
+                @endforeach
+            </x-bladewind.table>
 
         </x-bladewind.card>
-
-        <a href="{{ route('portal.admin.roles.create') }}">
-            <x-bladewind.button size="small" color="green">Create
-            </x-bladewind.button>
-        </a>
     </div>
 
-</x-app-layout>
+</x-staff-layout>

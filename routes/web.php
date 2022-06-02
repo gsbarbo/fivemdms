@@ -9,6 +9,7 @@ use App\Http\Controllers\PortalController;
 use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
+use App\Http\Controllers\Staff\ReportController as StaffReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,6 +52,8 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
         Route::prefix('staff')->name('staff.')->middleware(['auth', 'can:staff_access'])->group(function () {
             Route::get('dashboard', [StaffDashboardController::class, 'index'])->name('dashboard');
+
+            Route::resource('reports', StaffReportController::class, ['except' => ['create', 'store']]);
         });
 
 

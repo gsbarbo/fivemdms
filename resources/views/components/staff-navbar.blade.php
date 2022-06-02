@@ -23,11 +23,11 @@
             class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal') ? 'text-white' : '' }}"
-                href="{{ route('portal.index') }}">Portal</a>
+                href="{{ route('portal.index') }}">User Portal</a>
 
             @can('report_access')
-                <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
-                    href="{{ route('home') }}">Reports</a>
+                <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/staff/reports/*') || Request::is('portal/staff/reports') ? 'text-white' : '' }}"
+                    href="{{ route('portal.staff.reports.index') }}">Reports</a>
             @endcan
 
 
