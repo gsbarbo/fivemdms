@@ -10,6 +10,7 @@ use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
 use App\Http\Controllers\Staff\ReportController as StaffReportController;
+use App\Http\Controllers\Staff\UserController as StaffUserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -54,6 +55,8 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
             Route::get('dashboard', [StaffDashboardController::class, 'index'])->name('dashboard');
 
             Route::resource('reports', StaffReportController::class, ['except' => ['create', 'store']]);
+            Route::put('users/update_status/{user}', [StaffUserController::class, 'update_status'])->name('users.update_status');
+            Route::resource('users', StaffUserController::class, ['except' => ['create', 'store']]);
         });
 
 
@@ -61,6 +64,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
             Route::get('dashboard', [AdminDashboardController::class, 'index'])->name('dashboard');
 
             Route::get('permissions/restore/{permission}', [PermissionController::class, 'restore'])->name('permissions.restore');
+
             Route::resource('permissions', PermissionController::class, ['except' => ['show', 'update', 'edit']]);
 
             Route::resource('roles', RoleController::class, ['except' => ['show']]);

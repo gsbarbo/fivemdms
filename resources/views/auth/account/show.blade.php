@@ -14,17 +14,17 @@
 
             @if (!config('dms.must_apply') && ($user->account_status == 1 || $user->account_status == 3))
                 <div class="p-3 mx-auto my-4 bg-blue-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
-                    You must have an admin approve your account or application.
+                    You must have an admin approve your account or application. Check back later.
                 </div>
             @endif
 
-            @if (config('dms.must_apply') && $user->account_status == 2)
+            @if (config('dms.must_apply') && $user->account_status == 9)
                 <div class="p-3 mx-auto my-4 bg-blue-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
                     Your application has been approved. Join the Discord for an interview.
                 </div>
             @endif
 
-            @if ($user->account_status == 4)
+            @if ($user->account_status == 2)
                 <div class="p-3 mx-auto my-4 bg-green-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
                     <a href="{{ route('portal.index') }}">Your account or application has been approved. You may
                         access the panel here</a>.
@@ -40,6 +40,12 @@
             @if ($user->account_status == 6)
                 <div class="p-3 mx-auto my-4 bg-red-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
                     Your account has been banned. You must contact an admin for appeal.
+                </div>
+            @endif
+
+            @if ($user->account_status == 0)
+                <div class="p-3 mx-auto my-4 bg-red-500 rounded-lg shadow-sm md:w-2/3 text-off-white">
+                    Your account has been denied. You must contact an admin for appeal.
                 </div>
             @endif
 

@@ -39,8 +39,8 @@
             @endif
 
             @can('account_access')
-                <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
-                    href="{{ route('home') }}">Accounts</a>
+                <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/staff/users/*') || Request::is('portal/staff/users') ? 'text-white' : '' }}"
+                    href="{{ route('portal.staff.users.index') }}">Users</a>
             @endcan
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
