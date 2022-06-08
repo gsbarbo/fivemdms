@@ -20,6 +20,11 @@
                     <p>This user can only be changed by a super user. Which you are not.</p>
                 @else
                     <h3 class="text-xl font-semibold">Account Status</h3>
+
+                    @if (config('dms.must_apply'))
+                        show some sort of warning about statuses
+                    @endif
+
                     <form action="{{ route('portal.staff.users.update_status', $user->steam_hex) }}" method="post">
                         @csrf
                         @method('put')

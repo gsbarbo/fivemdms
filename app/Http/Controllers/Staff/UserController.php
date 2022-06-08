@@ -32,6 +32,11 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
+
+        if ($user->is_protected_user && !auth()->user()->is_super_user) {
+            return redirect()->route('portal.staff.users.index')->with('alert', ['message' => ['This user can only be changed by a super user. Which you are not.'], 'level' => "error"]);
+        }
+
         $account_statuses = DB::table('account_statuses')->get(['id', 'name']);
         return view('portal.staff.users.show', compact('user', 'account_statuses'));
     }
