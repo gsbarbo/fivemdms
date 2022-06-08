@@ -2,7 +2,7 @@
     <div class="container w-full mx-auto lg:w-3/5">
         <h1 class="text-3xl font-semibold text-center">Viewing User: {{ $user->display_name }}</h1>
 
-        <x-back-button />
+        <x-back-button href="{{ route('portal.staff.users.index') }}" />
 
         <div class="container w-9/12 h-64 p-5 mx-auto my-5">
             <div class="">

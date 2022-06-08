@@ -1,5 +1,5 @@
 <div class="">
-    <a href="{{ url()->previous() }}">
+    <a {{ $attributes->merge(['href' => url()->previous()]) }}>
         <x-bladewind.button type="secondary" size="small">
             Back
         </x-bladewind.button>
