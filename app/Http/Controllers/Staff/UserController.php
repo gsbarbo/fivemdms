@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Staff;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Staff\UserStatusRequest;
+use App\Http\Requests\Staff\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -42,13 +43,31 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdateRequest $request, User $user)
     {
+        $data = $request->validated();
+
+        if (isset($data['is_protected_user'])) {
+            $data['is_protected_user'] = 1;
+        } else {
+            $data['is_protected_user'] = 0;
+        }
+
+        if (isset($data['is_super_user'])) {
+            $data['is_super_user'] = 1;
+        } else {
+            $data['is_super_user'] = 0;
+        }
+
+        $user->update($data);
+
+        return redirect()->route('portal.staff.users.show', $user->steam_hex)->with('alert', ['message' => ['User Updated.'], 'level' => "success"]);
     }
 
 
     public function update_status(UserStatusRequest $request, User $user)
     {
+
         $user->update($request->validated());
 
         return redirect()->route('portal.staff.users.show', $user->steam_hex)->with('alert', ['message' => ['User Updated.'], 'level' => "success"]);
