@@ -94,7 +94,7 @@
                             ?>
 
                             @if (auth()->user()->account_status == 4)
-                                <a href="{{ route('portal.index') }}"
+                                <a href="{{ route('portal.dashboard') }}"
                                     class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg md:mt-0 hover:bg-gray-900">Go
                                     to Portal</a>
                             @endif
