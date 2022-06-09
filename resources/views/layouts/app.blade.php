@@ -35,8 +35,8 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     @powerGridStyles
 </head>
 
-<body class="bg-gray-400 dark:bg-primary">
-    <div class="font-sans antialiased text-gray-900 dark:text-off-white">
+<body class="bg-gray-50 dark:bg-primary">
+    <div class="antialiased text-gray-900 dark:text-off-white">
 
         <x-portal-navbar></x-portal-navbar>
         <div class="mt-8">{{ $slot }}</div>

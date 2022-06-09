@@ -13,9 +13,10 @@ class ReportController extends Controller
 
     public function index()
     {
-        $reports = ReportForm::where('is_active', true)->get();
+        $report_forms = ReportForm::where('is_active', true)->get();
+        $reports = Report::where('user_steam_hex', auth()->user()->steam_hex)->get();
 
-        return view('portal.reports.index', compact('reports'));
+        return view('portal.reports.index', compact('reports', 'report_forms'));
     }
 
     public function create(ReportForm $report_form)

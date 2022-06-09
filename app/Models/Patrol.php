@@ -12,6 +12,11 @@ class Patrol extends Model
 
     protected $fillable = ['user_steam_hex', 'started_at', 'stopped_at'];
 
+    protected $casts = [
+        'started_at' => 'datetime',
+        'stopped_at' => 'datetime',
+    ];
+
 
     public function user()
     {

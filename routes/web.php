@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
     });
 
     Route::prefix('portal')->name('portal.')->middleware(['auth', 'discord_link_check'])->group(function () {
-        Route::get('/', [PortalController::class, 'index'])->name('index');
+        Route::get('/', [PortalController::class, 'index'])->name('dashboard');
         Route::get('/roster', [RosterController::class, 'index'])->name('roster.index');
 
 

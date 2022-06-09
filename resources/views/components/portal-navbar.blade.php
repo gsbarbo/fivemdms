@@ -23,7 +23,7 @@
             class="flex-col flex-grow hidden pb-4 md:pb-0 md:flex md:justify-end md:flex-row">
 
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal') ? 'text-white' : '' }}"
-                href="{{ route('portal.index') }}">Home</a>
+                href="{{ route('portal.dashboard') }}">Home</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/reports/*') || Request::is('portal/reports') ? 'text-white' : '' }}"
                 href="{{ route('portal.reports.index') }}">Reports</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
