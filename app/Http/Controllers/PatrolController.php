@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Patrol;
 use App\Models\ReportForm;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,7 +15,9 @@ class PatrolController extends Controller
     {
         $patrols = Patrol::mine()->whereNotNull('stopped_at')->orderBy('stopped_at', 'desc')->get();
 
-        return view('portal.patrols.index', compact('patrols'));
+        $active_departments = auth()->user()->user_departments;
+
+        return view('portal.patrols.index', compact('patrols', 'active_departments'));
     }
 
     public function store(Request $request)

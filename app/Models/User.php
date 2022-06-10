@@ -61,6 +61,11 @@ class User extends Authenticatable
         return $this->hasMany(Patrol::class);
     }
 
+    public function user_departments()
+    {
+        return $this->hasMany(UserDepartments::class);
+    }
+
     public function report()
     {
         return $this->hasMany(Report::class);

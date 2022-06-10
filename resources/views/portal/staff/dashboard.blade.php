@@ -3,6 +3,7 @@
         <h1 class="text-3xl font-semibold text-center">Welcome, {{ auth()->user()->display_name }}</h1>
 
         <div class="my-5">
+
             <div>
                 <h3 class="text-lg leading-6 font-medium">Last 30 days stats</h3>
 
@@ -78,6 +79,7 @@
                         </dd>
                     </div>
                 </dl>
+
             </div>
 
         </div>

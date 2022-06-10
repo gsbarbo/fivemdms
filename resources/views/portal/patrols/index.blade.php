@@ -31,6 +31,26 @@
                 @else
                     <form action="{{ route('portal.patrols.store') }}" method="POST">
                         @csrf
+                        <div class="my-3">
+                            <label for="patrol_id">What department are you patroling as?</label>
+                            <select id="patrol_id" name="patrol_id"
+                                class="block w-full max-w-lg text-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm mx-auto">
+                                @foreach ($active_departments as $department)
+                                    <option value="0">
+                                        {{ $department->department->name }} ({{ $department->badge_number }})
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+                        {{-- <div class="my-3">
+                            <label for="patrol_id">What Subdivision are you patroling as?</label>
+                            <select id="patrol_id" name="patrol_id"
+                                class="block w-full max-w-lg text-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm mx-auto">
+                                <option value="0">None</option>
+                                <option value="0">k9</option>
+                            </select>
+                        </div> --}}
                         <x-bladewind.button color="green" can_submit="true">Go On Duty</x-bladewind.button>
                     </form>
                 @endif
