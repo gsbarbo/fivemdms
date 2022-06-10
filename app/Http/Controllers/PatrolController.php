@@ -12,7 +12,7 @@ class PatrolController extends Controller
 {
     public function index()
     {
-        $patrols = Patrol::mine()->get();
+        $patrols = Patrol::mine()->whereNotNull('stopped_at')->orderBy('stopped_at', 'desc')->get();
 
         return view('portal.patrols.index', compact('patrols'));
     }
