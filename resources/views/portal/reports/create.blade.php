@@ -32,7 +32,7 @@
                                 <option value="{{ $patrol->id }}"
                                     @if ($patrol_id == $patrol->id) selected="selected" @endif
                                     @if (old('patrol_id') == $patrol->id) selected="selected" @endif>
-                                    {{ $patrol->id }} - {{ $patrol->stopped_at->format('m/d/Y H:m') }}
+                                    {{ $patrol->id }} - {{ $patrol->stopped_at->format('m/d/Y H:i') }}
                                 </option>
                             @endforeach
                         </select>

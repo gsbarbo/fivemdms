@@ -43,12 +43,6 @@
                     href="{{ route('portal.staff.users.index') }}">Users</a>
             @endcan
 
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
-                href="{{ route('portal.roster.index') }}">DAs??</a>
-
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
-                href="{{ route('portal.roster.index') }}">Roster</a>
-
             <div @click.away="open = false" class="relative" x-data="{ open: false }">
                 <button @click="open = !open"
                     class="flex flex-row items-center w-full px-2 py-2 mt-2 font-semibold text-left bg-transparent rounded-lg md:w-auto md:inline md:mt-0 md:ml-4">

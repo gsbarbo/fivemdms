@@ -3,7 +3,7 @@
         class="flex flex-col px-4 mx-auto max-w-screen-2xl md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
         <div class="flex flex-row items-center justify-between p-4">
             {{-- <img src="{{ asset('images/logo.png') }}" width="60" height="60" alt=""> --}}
-            <a href="#"
+            <a href="{{ route('portal.dashboard') }}}"
                 class="text-lg font-semibold tracking-widest text-white uppercase rounded-lg xl:ml-3 focus:outline-none focus:shadow-outline">
                 {{ config('app.name') }} - Portal
             </a>
@@ -28,8 +28,8 @@
                 href="{{ route('portal.reports.index') }}">Reports</a>
             <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/patrols/*') || Request::is('portal/patrols') ? 'text-white' : '' }}"
                 href="{{ route('portal.patrols.index') }}">Patrols</a>
-            <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
-                href="{{ route('portal.roster.index') }}">Roster</a>
+            {{-- <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('portal/roster') ? 'text-white' : '' }}"
+                href="{{ route('portal.roster.index') }}">Roster</a> --}}
 
             @can('staff_access')
                 <a class="md:mt-0 hover:text-white px-3 py-2 mt-3 font-semibold rounded-lg {{ Request::is('/portal/staff/*') ? 'text-white' : '' }}"

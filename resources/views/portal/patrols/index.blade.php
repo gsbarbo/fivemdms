@@ -32,11 +32,11 @@
                     <form action="{{ route('portal.patrols.store') }}" method="POST">
                         @csrf
                         <div class="my-3">
-                            <label for="patrol_id">What department are you patroling as?</label>
-                            <select id="patrol_id" name="patrol_id"
+                            <label for="user_department_id">What department are you patroling as?</label>
+                            <select id="user_department_id" name="user_department_id"
                                 class="block w-full max-w-lg text-black rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm mx-auto">
                                 @foreach ($active_departments as $department)
-                                    <option value="0">
+                                    <option value="{{ $department->id }}">
                                         {{ $department->department->name }} ({{ $department->badge_number }})
                                     </option>
                                 @endforeach

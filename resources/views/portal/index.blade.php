@@ -51,10 +51,6 @@
                     <x-bladewind.button>New Report</x-bladewind.button>
                 </a>
 
-                <a href="{{ route('portal.roster.index') }}">
-                    <x-bladewind.button>Department Roster</x-bladewind.button>
-                </a>
-
                 @can('staff_access')
                     <a href="{{ route('portal.staff.dashboard') }}">
                         <x-bladewind.button color="red">Staff Area</x-bladewind.button>

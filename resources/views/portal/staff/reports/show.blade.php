@@ -9,7 +9,7 @@
                     <p>Last update: {{ $report->updated_at }}</p>
                     @if ($report->patrol)
                         <p>Patrol: <a class="underline"
-                                href="{{ route('portal.patrols.show', $report->patrol_id) }}">{{ $report->patrol_id }}
+                                href="{{ route('portal.staff.patrols.show', $report->patrol_id) }}">{{ $report->patrol_id }}
                             </a></p>
                     @else
                         <p>Patrol: Not Linked</p>

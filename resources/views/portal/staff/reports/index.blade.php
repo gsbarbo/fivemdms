@@ -1,28 +1,21 @@
 <x-staff-layout>
-    <div class="container w-full mx-auto lg:w-3/5">
-        <x-bladewind.card title="Reports">
+    <div class="container w-full mx-auto lg:w-3/5 p-3">
+        <div class="">
+            <h1 class="text-3xl font-semibold text-center">Welcome, {{ auth()->user()->display_name }}</h1>
+            <x-back-button />
+        </div>
 
-            <x-bladewind.table>
-                <tr class="dark:text-off-white">
-                    <th>ID</th>
-                    <th>Submitter</th>
-                    <th>Report</th>
-                    <th>Actions</th>
-                </tr>
-                @foreach ($reports as $report)
-                    <tr>
-                        <td>{{ $report->id }}</td>
-                        <td>{{ $report->user->display_name }}</td>
-                        <td>{{ $report->report_form->title }}</td>
-                        <td>
-                            <a href="{{ route('portal.staff.reports.show', $report->id) }}" <x-bladewind.button
-                                size="tiny">View</x-bladewind.button>
-                        </td>
-                    </tr>
-                @endforeach
-            </x-bladewind.table>
+        <div class="my-5">
+            <h3 class="text-xl font-semibold text-center">Completed Reports</h3>
+            @livewire('staff.report-table')
+        </div>
 
-        </x-bladewind.card>
+        <hr>
+
+        <div class="my-5">
+
+        </div>
+
     </div>
 
 </x-staff-layout>

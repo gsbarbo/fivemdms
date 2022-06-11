@@ -10,7 +10,7 @@ class Patrol extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_steam_hex', 'started_at', 'stopped_at'];
+    protected $fillable = ['user_steam_hex', 'started_at', 'stopped_at', 'user_department_id'];
 
     protected $casts = [
         'started_at' => 'datetime',

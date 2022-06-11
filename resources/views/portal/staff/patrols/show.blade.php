@@ -1,11 +1,8 @@
-<x-app-layout>
+<x-staff-layout>
 
     <div class="container w-full mx-auto lg:w-3/5 p-3">
         <div class="">
             <h1 class="text-3xl font-semibold text-center">Welcome, {{ auth()->user()->display_name }}</h1>
-            <p class="mt-3 text-lg text-center">Your current unit number is: <span
-                    class="text-2xl font-bold">{{ auth()->user()->badge_number }}</span>. If this is
-                wrong please see your department staff.</p>
             <x-back-button />
         </div>
 
@@ -33,20 +30,7 @@
                     @endforeach
                 </div>
             </div>
-
-            <div class="my-5">
-                <h3 class="text-xl font-semibold text-center">Add New Report</h3>
-                <div class="space-x-4 space-y-4">
-                    @foreach ($fillable_reports as $report)
-                        <a href="{{ route('portal.reports.create', $report->id) }}?patrol_id={{ $patrol->id }}">
-                            <x-bladewind.button size="small" color="green">
-                                {{ $report->title }}
-                            </x-bladewind.button>
-                        </a>
-                    @endforeach
-                </div>
-            </div>
         </div>
     </div>
 
-</x-app-layout>
+</x-staff-layout>

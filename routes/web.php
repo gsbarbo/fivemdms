@@ -9,6 +9,7 @@ use App\Http\Controllers\PortalController;
 use App\Http\Controllers\Reports\ReportController;
 use App\Http\Controllers\RosterController;
 use App\Http\Controllers\Staff\DashboardController as StaffDashboardController;
+use App\Http\Controllers\staff\PatrolController as StaffPatrolController;
 use App\Http\Controllers\Staff\ReportController as StaffReportController;
 use App\Http\Controllers\Staff\UserController as StaffUserController;
 use Illuminate\Support\Facades\Route;
@@ -38,8 +39,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
     Route::prefix('portal')->name('portal.')->middleware(['auth', 'discord_link_check'])->group(function () {
         Route::get('/', [PortalController::class, 'index'])->name('dashboard');
-        Route::get('/roster', [RosterController::class, 'index'])->name('roster.index');
-
+        // Route::get('/roster', [RosterController::class, 'index'])->name('roster.index');
 
         Route::get('/patrols', [PatrolController::class, 'index'])->name('patrols.index');
         Route::post('/patrols', [PatrolController::class, 'store'])->name('patrols.store');
@@ -53,6 +53,7 @@ Route::group(['middleware' => ['auth', 'discord_link_check']], function () {
 
         Route::prefix('staff')->name('staff.')->middleware(['auth', 'can:staff_access'])->group(function () {
             Route::get('dashboard', [StaffDashboardController::class, 'index'])->name('dashboard');
+            Route::get('patrols/{patrol}', [StaffPatrolController::class, 'show'])->name('patrols.show');
 
             Route::resource('reports', StaffReportController::class, ['except' => ['create', 'store']]);
             Route::put('users/update_status/{user}', [StaffUserController::class, 'update_status'])->name('users.update_status');

@@ -25,6 +25,7 @@ class PatrolController extends Controller
 
         Patrol::create([
             'user_steam_hex' => auth()->user()->steam_hex,
+            'user_department_id' => $request->input('user_department_id'),
             'started_at' => new Carbon(),
         ]);
 
