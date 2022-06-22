@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Staff\UserStatusRequest;
 use App\Http\Requests\Staff\UserUpdateRequest;
+use App\Models\Department;
 use App\Models\User;
+use App\Models\UserDepartments;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,8 +39,11 @@ class UserController extends Controller
             return redirect()->route('portal.staff.users.index')->with('alert', ['message' => ['This user can only be changed by a super user. Which you are not.'], 'level' => "error"]);
         }
 
+        $departments = Department::get(['name', 'id']);
+        $user_departments = UserDepartments::where('user_steam_hex', $user->steam_hex)->get();
+
         $account_statuses = DB::table('account_statuses')->get(['id', 'name']);
-        return view('portal.staff.users.show', compact('user', 'account_statuses'));
+        return view('portal.staff.users.show', compact('user', 'account_statuses', 'departments', 'user_departments'));
     }
 
     /**
